@@ -1,14 +1,12 @@
 from itertools import permutations
-from math import perm
-from operator import ne
 
-def compare_id(u, b):
-    if b == []:
+def compare_id(u, p):
+    if p == []:
         return True
     
-    if len(b) == len(u):
-        for c in range(len(b)):
-            if b[c] == u[c] or b[c] == '*':
+    if len(p) == len(u):
+        for c in range(len(p)):
+            if p[c] == u[c] or p[c] == '*':
                 continue
             else:
                 return False
@@ -23,15 +21,19 @@ def solution(user_id, banned_id):
     for _ in range(len(user_id) - len(banned_id)):
         ban.append([])
     
-    print(ban)
+    temp = list(permutations(ban, len(ban)))
+    possible_id = [] 
+    for p in temp:
+        if p not in possible_id:
+            possible_id.append(p)
     
-    possible_id = list(permutations(ban, len(ban)))
-    new_possible_id = [] 
     for p in possible_id:
-        if p not in new_possible_id:
-            new_possible_id.append(p)
-    
-    print(new_possible_id)
+        cnt = 0
+        for i in range(len(p)):
+            if compare_id(user_id[i], p[i]):
+                cnt += 1
+        if cnt == len(user_id):
+            result += 1
     
     return result
 
