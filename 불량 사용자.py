@@ -22,20 +22,26 @@ def solution(user_id, banned_id):
         ban.append([])
     
     temp = list(permutations(ban, len(ban)))
-    possible_id = [] 
+    possible_id = []
     for p in temp:
         if p not in possible_id:
             possible_id.append(p)
     
+    result_list = []
     for p in possible_id:
         cnt = 0
         for i in range(len(p)):
             if compare_id(user_id[i], p[i]):
                 cnt += 1
         if cnt == len(user_id):
-            result += 1
+            result_list.append(p)
     
-    return result
+    result = []
+    for r in result_list:
+        if r not in result:
+            result.append(r)
+    
+    return len(result)
 
 user_id = list(input().split())
 # frodo fradi crodo abc123 frodoc
