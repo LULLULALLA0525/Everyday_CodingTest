@@ -105,7 +105,7 @@ arr = [6, 5, 6, 4, 4, 1, 1, 2, 3, 9, 8, 7, 9, 8, 7]
 result = []  #중복을 제거한 리스트를 저장할 리스트
 
 for elem in arr:
-    if elem not in resut1:
+    if elem not in result1:
         result.append(elem)
 ```
 
@@ -113,4 +113,28 @@ for elem in arr:
 
 ```python
 result --> [6, 5, 4, 1, 2, 3, 9, 8, 7]
-```# 2019-kakao-winter-internship-CT
+```
+
+---
+
+## **🔥자료구조 - 큐(QUEUE)**
+
+</br>
+
+```python
+from collections import deque
+```
+
+를 통해 import 할 수 있으며, 사용 방식은 다음과 같다.
+
+</br>
+</br>
+
+```python
+queue = deque()         #큐 초기화
+
+queue.append(1)         #큐에 요소 넣기
+a = queue.popleft()     #큐의 왼쪽(가장 먼저 들어간 요소)에서 요소 꺼내기
+
+queue.reverse()         #큐에 저장된 요소 순서 뒤집기
+```
