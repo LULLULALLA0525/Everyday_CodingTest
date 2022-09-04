@@ -58,23 +58,21 @@ def solution(maze):
             elif maze[row][column] == "F":
                 position_of_f = [column, row]
 
-    j_maze = []
-    f_maze = []
-    for cells in maze:
-        j_cells = []
-        f_cells = []
-        for cell in cells:
-            if cell == "#":
-                j_cells.append(INF)
-                f_cells.append(INF)
+    j_maze = [[] for _ in range(len(maze))]
+    f_maze = [[] for _ in range(len(maze))]
+    for i in range(len(maze)):
+        for j in range(len(maze[i])):
+            if maze[i][j] == "#":
+                j_maze[i].append(INF)
+                f_maze[i].append(INF)
             else:
-                j_cells.append(0)
-                f_cells.append(0)
-        j_maze.append(j_cells)
-        f_maze.append(f_cells)
+                j_maze[i].append(0)
+                f_maze[i].append(0)
 
     print(j_maze)
     print(f_maze)
+    print(m)
+    print("!")
 
     bfs(j_maze, position_of_j, f_maze, position_of_f)
 
