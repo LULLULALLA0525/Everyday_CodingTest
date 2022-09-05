@@ -1,10 +1,11 @@
 def solution(people, limit):
     answer = 0
+    rescued = [False for _ in range(len(people))]
 
     remain = limit
-    index = len(people) - 1
-    while index >= 0:
-        while remain > 0:
+    for i in range(len(people) - 1, -1, -1):
+        if rescued[i]:
+            continue
 
 
     return answer
