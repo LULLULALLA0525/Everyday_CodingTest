@@ -153,6 +153,7 @@ queue = deque()         #큐 초기화
 
 queue.append(1)         #큐에 요소 넣기
 a = queue.popleft()     #큐의 왼쪽(가장 먼저 들어간 요소)에서 요소 꺼내기
+queue.appendleft()      #큐의 왼쪽에 요소 넣기
 
 queue.reverse()         #큐에 저장된 요소 순서 뒤집기
 ```
