@@ -19,6 +19,7 @@ def rescue_light(people_queue, remain):
 
 def solution(people, limit):
 	answer = 0
+	people.sort()
 	people_queue = deque(people)
 
 	while people_queue:
