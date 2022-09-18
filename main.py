@@ -1,32 +1,38 @@
 def solution(gems):
-	gem_list = {}
-	for gem_idx in range(len(gems)):
-		if gems[gem_idx] in gem_list.keys():
-			gem_list[gems[gem_idx]].append(gem_idx)
-		else:
-			gem_list[gems[gem_idx]] = []
-			gem_list[gems[gem_idx]].append(gem_idx)
-	print(gem_list)
+    gem_dict = {}
+    for gem_idx in range(len(gems)):
+        if gems[gem_idx] in gem_dict.keys():
+            gem_dict[gems[gem_idx]].append(gem_idx + 1)
+        else:
+            gem_dict[gems[gem_idx]] = []
+            gem_dict[gems[gem_idx]].append(gem_idx + 1)
+    print(gem_dict)
 
-	start_idx, end_idx = 0, 0
-	answer = [start_idx, end_idx]
-	return answer
+    first_gem_index = []
+    for gem in gem_dict.keys():
+        first_gem_index.append(gem_dict[gem][0])
+    min_index = max(first_gem_index)
 
-gems = list(input().split())
-#DIA RUBY RUBY DIA DIA EMERALD SAPPHIRE DIA
-#AA AB AC AA AC
-#XYZ XYZ XYZ
-#ZZZ YYY NNNN YYY BBB
+    start_idx, end_idx = 0, 0
+    answer = [start_idx, end_idx]
+    return answer
 
-print(solution(gems))
-#[3, 7]
-#[1, 3]
-#[1, 1]
-#[1, 5]
 
-#0 1 2 3 4 5 6 7
-#1 2 3 1 2 2 3 1
-#1 -> 0, 3, 7
-#2 -> 1, 4, 5
-#3 -> 2, 6
+gems_temp = list(input().split())
+# DIA RUBY RUBY DIA DIA EMERALD SAPPHIRE DIA
+# AA AB AC AA AC
+# XYZ XYZ XYZ
+# ZZZ YYY NNN YYY BBB
+
+print(solution(gems_temp))
+# [3, 7]
+# [1, 3]
+# [1, 1]
+# [1, 5]
+
+# 1 2 3 4 5 6 7 8
+# 1 2 3 1 2 2 3 1
+# 1 -> 1, 4, 8
+# 2 -> 2, 5, 6
+# 3 -> 3, 7
 print("태우야 사랑해")
