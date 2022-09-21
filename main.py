@@ -9,8 +9,6 @@
 # 라이언이 이길 수 없을 경우, [-1]을 반환한다.
 
 # 0/1 Knapsack Problem -> Dynamic Programming 활용 가능?!
-INF = 1000
-
 def compare(a_info, r_info):
 	a_score, r_score = 0, 0
 	for i in range(11):
@@ -25,9 +23,9 @@ def compare(a_info, r_info):
 def solution(n, info):
 	ryan = [[0] * 11] * (n + 1)
 	for arrow in range(1, n + 1):
-		optimized = INF * (-1)
-		for shoot in range(1, n + 1):
-			prev_info = [i for i in ryan[arrow - shoot]]
+		optimized = -1000
+		for shoot in range(1, arrow + 1):
+			prev_info = list(ryan[arrow - shoot])
 			expect = 0
 			index = -1
 			for i in range(len(info)):
@@ -40,15 +38,15 @@ def solution(n, info):
 					if temp > expect:
 						expect = temp
 						index = i
-			if index == -1 
 			prev_info[index] += shoot
 			score = compare(info, prev_info)
 			if score > optimized:
 				optimized = score
-				print(ryan[arrow], prev_info, optimized)
-				for i in range(len(prev_info)):
-					ryan[arrow][i] = prev_info[i]
-	return ryan[n]
+				ryan[arrow] = list(prev_info)
+	if compare(info, ryan[n]) <= 0:
+		return [-1]
+	else:
+		return ryan[n]
 
 n = int(input())
 info = list(map(int, input().split(",")))
