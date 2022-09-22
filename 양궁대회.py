@@ -8,6 +8,57 @@
 # 만약 경우의 수가 여러가지일 경우, 가장 적은 과녁을 많이 맞춘 과녁 정보를 반환한다.
 # 라이언이 이길 수 없을 경우, [-1]을 반환한다.
 
+# 0/1 Knapsack Problem -> Dynamic Programming 활용 가능?!
+def compare(a_info, r_info):
+    a_score, r_score = 0, 0
+    for i in range(11):
+        if a_info[i] == 0 and r_info[i] == 0:
+            continue
+        if a_info[i] >= r_info[i]:
+            a_score += 10 - i
+        else:
+            r_score += 10 - i
+    return r_score - a_score
+
+
 def solution(n, info):
-    answer = []
-    return answer
+    ryan = [[0] * 11] * (n + 1)
+    for arrow in range(1, n + 1):
+        optimized = -1000
+        for shoot in range(1, arrow + 1):
+            prev_info = list(ryan[arrow - shoot])
+            expect = 0
+            index = -1
+            for i in range(len(info)):
+                if info[i] == shoot - 1 and prev_info[i] == 0:
+                    if info[i] == 0:
+                        temp = 10 - i
+                    else:
+                        temp = 2 * (10 - i)
+
+                    if temp > expect:
+                        expect = temp
+                        index = i
+            prev_info[index] += shoot
+            score = compare(info, prev_info)
+            if score > optimized:
+                optimized = score
+                ryan[arrow] = list(prev_info)
+    if compare(info, ryan[n]) <= 0:
+        return [-1]
+    else:
+        return ryan[n]
+
+
+n = int(input())
+info = list(map(int, input().split(",")))
+
+print(solution(n, info))
+'''
+n	info					result
+	10 9 8 7 6 5 4 3 2 1 0
+5	[2,1,1,1,0,0,0,0,0,0,0]	[0,2,2,0,1,0,0,0,0,0,0]
+1	[1,0,0,0,0,0,0,0,0,0,0]	[-1]
+9	[0,0,1,2,0,1,1,1,1,1,1]	[1,1,2,0,1,2,2,0,0,0,0]
+10	[0,0,0,0,0,0,0,0,3,4,3]	[1,1,1,1,1,1,1,1,0,0,2]
+'''
