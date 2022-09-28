@@ -1,8 +1,33 @@
 # 파일을 합치는 데 소요되는 시간은 두 파일의 크기의 합과 같다.
 # 파일의 크기들이 나열될 떄, 파일을 전부 합칠 수 있는 최소 비용을 구하시오.
+def pick_smallest(files, merged):
+    if len(files) == 0:
+        return merged.pop()
+    elif len(merged) == 0:
+        return files.pop()
+
+    merged.sort(reverse=True)
+    f = files.pop()
+    m = merged.pop()
+    if f < m:
+        merged.append(m)
+        return f
+    else:
+        files.append(f)
+        return m
+
+
 def solution(n, files):
-    
-    return 0
+    answer = 0
+    files.sort(reverse=True)
+    merged = []
+
+    while len(files) + len(merged) > 1:
+        cost = pick_smallest(files, merged) + pick_smallest(files, merged)
+        merged.append(cost)
+        answer += cost
+
+    return answer
 
 
 t = int(input())
