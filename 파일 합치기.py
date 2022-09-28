@@ -6,7 +6,6 @@ def pick_smallest(files, merged):
     elif len(merged) == 0:
         return files.pop()
 
-    merged.sort(reverse=True)
     f = files.pop()
     m = merged.pop()
     if f < m:
@@ -19,13 +18,21 @@ def pick_smallest(files, merged):
 
 def solution(n, files):
     answer = 0
+
     files.sort(reverse=True)
     merged = []
 
     while len(files) + len(merged) > 1:
         cost = pick_smallest(files, merged) + pick_smallest(files, merged)
-        merged.append(cost)
         answer += cost
+        inserted = False
+        for i in range(len(merged)):
+            if cost >= merged[i]:
+                merged.insert(cost, i)
+                break
+        if not inserted:
+            merged.append(cost)
+        print(merged)
 
     return answer
 
