@@ -4,4 +4,3 @@ def solution(n):
 
 n = int(input())
 print(solution(n))
-# 안녕
