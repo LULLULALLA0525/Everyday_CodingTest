@@ -209,3 +209,21 @@ d = sorted(a, key=lambda x:(-x[1], x[0]))
 s = "abdefg"
 res = s[:2] + 'c' + s[2:]
 ```
+
+---
+
+## **🔥조금 더 빠른 입출력**
+
+</br>
+
+일반적인 python 입출력으로는 애매하게 시간 초과가 나는 경우가 있다. 그럴 경우에는 다음과 같은 입출력 방법을 사용해보자.
+
+```python
+import sys
+input = sys.stdin.readline
+print = sys.stdout.write
+```
+
+위에 얘네들만 추가해주면 자동으로 input()이나 print()만 써도 된다.
+
+대신 print() 내부에는 string만 넣어야 한다.
