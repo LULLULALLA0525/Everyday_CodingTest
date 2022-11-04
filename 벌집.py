@@ -1,13 +1,11 @@
 def solution(n):
-    bee = [0]
     num = 1
     i = 0
-    while True:
+    while num < n:
+        i += 1
         num += 6*i
-        bee.append(num)
-        if num > n:
-            break
-    return n
+
+    return i + 1
 
 
 n = int(input())
