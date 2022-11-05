@@ -1,6 +1,8 @@
 def solution(n):
-    return n
+    if n.isdigit():
+        return 0
+    return 1
 
 
-n = int(input())
+n = input()
 print(solution(n))
