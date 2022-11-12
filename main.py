@@ -1,6 +1,9 @@
+import sys
+input = lambda: sys.stdin.readline()
+
 def solution(n):
-    return n
+	return n
 
 
-n = input()
-print(solution(n))
+N = int(input())
+print(solution(N))
