@@ -32,7 +32,10 @@ def solution(n, apt):
     answer = sorted(answer)
     print(len(answer))
     for i in answer:
-        print(i)
+        if i == 0:
+            print(1)
+        else:
+            print(i)
     if len(answer) == 0:
         print(0)
 
