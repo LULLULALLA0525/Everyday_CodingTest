@@ -13,8 +13,6 @@ def solution(n, cost):
   dp[0] = cost[0][MIN][VALUE]
   log[0] = cost[0][MIN][INDEX]
 
-  if 
-
   
   return n
 
