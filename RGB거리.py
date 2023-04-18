@@ -2,23 +2,18 @@ import sys
 
 input = lambda: sys.stdin.readline()
 
-INDEX, VALUE = 0, 1
-MIN, MED, MAX = 0, 1, 2
-
 def solution(n, cost):
-  cost = sorted(cost, key=lambda x:x[VALUE])
-  dp = [0] * n
-  log = [0] * n
+  dp = [[0, 0, 0] for _ in range(n)]
+  dp[0] = cost[0]
 
-  dp[0] = cost[0][MIN][VALUE]
-  log[0] = cost[0][MIN][INDEX]
+  for i in range(1, n):
+    for j in range(3):
+      dp[i][j] = cost[i][j] + min(dp[i - 1][(j + 1) % 3], dp[i - 1][(j + 2) % 3])
 
-  
-  return n
+  return min(dp[n - 1])
 
 N = int(input())
 COST = []
 for _ in range(N):
-  TEMP = list(map(int, input().split()))
-  COST.append([(i, TEMP[i]) for i in range(3)])
+  COST.append(list(map(int, input().split())))
 print(solution(N, COST))
