@@ -13,7 +13,7 @@ def solution(k, c, sushies):
 
   for i in range(len(sushies)):
     sub_list.popleft()
-    sub_list.append(sushies[(i + k + 1) % len(sushies)])
+    sub_list.append(sushies[(i + k) % len(sushies)])
 
     length = len(set(list(sub_list) + [c]))
 
