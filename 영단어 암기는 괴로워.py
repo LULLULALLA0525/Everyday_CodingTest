@@ -11,7 +11,7 @@ def solution(m, words):
     else:
       note[word] = 1
 
-  sorted_words = sorted(note.items(), key=lambda word, counts: (-counts, -len(word), word[0]))
+  sorted_words = sorted(note, key=lambda word: (-note[word], -len(word), word))
   for word in sorted_words:
     print(word)
 
