@@ -22,7 +22,6 @@ def solution(table, k):
           table[j] = "X"
           break
 
-  print(table)
   return result
 
 N, K = list(map(int, input().split()))
