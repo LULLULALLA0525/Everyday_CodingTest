@@ -27,7 +27,7 @@ def solution(words):
         total_gap = gap
         continue
       elif (gap == 1 and total_gap == -1) or (gap == -1 and total_gap == 1):
-        gap = 100
+        total_gap = 100
         continue
       else:
         total_gap = -100
