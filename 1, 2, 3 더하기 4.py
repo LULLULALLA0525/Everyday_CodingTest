@@ -5,15 +5,6 @@ input = lambda: sys.stdin.readline()
 # 1로만 이루어진, 2로만 이루어진, 3으로만 이루어진, (1, 2)로만 이루어진, (2, 3)으로만 이루어진, (1, 3)으로만 이루어진, (1, 2, 3) 전부로 이루어진
 ONLY1, ONLY2, ONLY3, ONLY12, ONLY23, ONLY13, ALL = list(range(7))
 
-def is_match(equation, num):
-  equation = list(set(equation))
-  if num == 1:
-    return True
-  elif num == 2:
-    return equation == [2] or equation == [3] or equation == [2, 3] or equation == [3, 2]
-  else: 
-    return equation == [3]
-
 def solution(numbers):
   dp = [[0, 0, 0, 0, 0, 0, 0] for _ in range(max(numbers) + 1)]
   dp[1] = [1, 0, 0, 0, 0, 0, 0]   # 1

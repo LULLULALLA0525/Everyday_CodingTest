@@ -3,9 +3,7 @@ import sys
 input = lambda: sys.stdin.readline()
 
 def solution(s):
-  counts = [0, 0]
-  for c in s:
-    counts[c] += 1
+  counts = [s.count(i) for i in range(2)]
   
   new_s = []
   new_counts = [0, 0]
