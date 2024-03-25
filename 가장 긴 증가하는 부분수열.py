@@ -13,7 +13,7 @@ def solution(n, array):
         max_value = max(max_value, dp[j])
     dp[i] = max_value + 1
 
-  return dp[n - 1]
+  return max(dp)
 
 N = int(input())
 ARRAY = list(map(int, input().split()))
