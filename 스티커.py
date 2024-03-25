@@ -2,8 +2,6 @@ import sys
 
 input = lambda: sys.stdin.readline()
 
-CHOICE, VALUE = 0, 1
-
 def solution(n, stickers):
   dp = [[0 for _ in range(n)] for _ in range(2)]
 
