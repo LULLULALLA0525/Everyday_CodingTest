@@ -1,12 +1,59 @@
-def init_queens(queens, i):     # i번째 이후의 queen을 모두 초기화
-    for q in range(i, len(queens)):
-        queens[q] = -1
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def isAvailableIndex(board, index):
+  for i in range(len(board)):
+    if index == board[i]:
+      return False
+    elif abs(index - board[i]) == abs(len(board) - i):
+      return False
+  return True
+
+def placeQueen(n, board):
+  if len(board) == n:
+    return 1
+  
+  count = 0
+  for i in range(n):
+    if isAvailableIndex(board, i):
+      newBoard = board + [i]
+      count += placeQueen(n, newBoard)
+
+  return count
 
 def solution(n):
-    queens = [-1] * n           # 각 row별 queen의 좌표
-    board = [[True] * n] * n    # 2차원 보드(True면 배치 가능, False면 배치 불가능
+  return placeQueen(n, [])
 
-    answer = 0
-    return answer
+N = int(input())
+print(solution(N))
 
-n = int(input())
+
+# 더 빠른 코드, 하지만 복잡함
+# def getAvailableIndexAfter(n, board):
+#   inavailable = set()
+#   for i in range(len(board)):
+#     inavailable.add(board[i])
+#     inavailable.add(board[i] - (len(board) - i))
+#     inavailable.add(board[i] + (len(board) - i))
+
+#   available = [i for i in range(n) if i not in inavailable]
+#   return available
+
+# def placeQueen(n, board):
+#   if len(board) == n:
+#     return 1
+  
+#   count = 0
+#   available = getAvailableIndexAfter(n, board)
+#   for i in available:
+#     newBoard = board + [i]
+#     count += placeQueen(n, newBoard)
+  
+#   return count
+
+# def solution(n):
+#   return placeQueen(n, [])
+
+# N = int(input())
+# print(solution(N))
