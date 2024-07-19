@@ -2,11 +2,30 @@ import sys
 
 input = lambda: sys.stdin.readline()
 
+def checkType(type, digit):
+    if type == 'a':
+        return 1 <= digit and digit <= 9
+    elif type == 's':
+        return 1 <= digit and digit <= 4
+    elif type == 'b':
+        return 5 <= digit and digit <= 9
+    else:
+        return False
+
 def solution(types, codes):
     answer = []
     errors = 0
 
-    
+    for code in codes:
+        keywords = code.split()
+        if keywords[0] == "declare":
+            TODO
+        elif keywords[0] == "update":
+            TODO
+        elif keywords[0] == "print":
+            TODO
+        else:
+            errors += 1
 
     answer += [errors]
     return answer
