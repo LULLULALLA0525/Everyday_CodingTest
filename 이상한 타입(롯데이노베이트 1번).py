@@ -1,7 +1,4 @@
-import sys
 from collections import defaultdict
-
-input = lambda: sys.stdin.readline()
 
 TP, NUM = 0, 1
 def defaultVariable():
